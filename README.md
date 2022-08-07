@@ -1,2 +1,2 @@
-# SI-pendaftaran-pada-lembaga-Madrasah-Ibtida-iyah
+# SI-penerimaan
 Tugas UAS
