@@ -1,0 +1,144 @@
+<?php
+$db = __database();
+$opsi = $_GET['action'];
+// start input
+if ($opsi == "input") {
+    $data = [
+        'kd_calon' => $_POST['kd_calon'],
+        'nama_calon' => $_POST['nama_calon'],
+        'profil' => $_POST['profil'],
+        'status' => $_POST['status'],
+        'tel' => $_POST['tel'],
+        'tl' => $_POST['tl'],
+        'alamat' => $_POST['alamat'],
+        'password' => sha1($_POST['password'])
+    ];
+    $simpan = __simpan($db, "calon", $data);
+    if ($simpan) {
+?>
+        <script>
+            window.location.href = 'admin.php?target=calon';
+        </script>
+    <?php
+    } else {
+        echo "gagal simpan" . $db->error;
+    }
+}
+// end kondisi input
+// start kondisi delete
+elseif ($opsi == "delete") {
+    $where = [
+        'kd_calon' => $_GET['id']
+    ];
+    $delete = __delete($db, "calon", $where);
+    if ($delete) {
+    ?>
+        <script>
+            window.location.href = 'admin.php?target=calon';
+        </script>
+    <?php
+    } else {
+        echo "gagal hapus" . $db->error;
+    }
+    // start pengajuan
+if ($opsi == "pengajuan") {
+    $data = [
+        'kd_calon' => $_POST['kd_calon'],
+        'nama_calon' => $_POST['nama_calon'],
+        'profil' => $_POST['profil'],
+        'status' => $_POST['status'],
+        'tel' => $_POST['tel'],
+        'tl' => $_POST['tl'],
+        'alamat' => $_POST['alamat'],
+        'password' => sha1($_POST['password'])
+    ];
+    $simpan = __simpan($db, "calon" -> $data);
+    if ($simpan) {
+?>
+        <script>
+            window.location.href = 'admin.php?target=istikharah';
+        </script>
+    <?php
+    } else {
+        echo "gagal simpan" . $db->error;
+    }
+}
+
+}
+//end kondisi delete
+//start kondisi update
+elseif ($opsi == "update") {
+    if (!empty($_POST['password'])) {
+        $data = [
+            'nama_calon' => $_POST['nama_calon'],
+            'profil' => $_POST['profil'],
+            'status' => $_POST['status'],
+            'tel' => $_POST['tel'],
+            'tl' => $_POST['tl'],
+            'alamat' => $_POST['alamat'],
+            'password' => sha1($_POST['password'])
+        ];
+    } else {
+        $data = [
+            'nama_calon' => $_POST['nama_calon'],
+            'profil' => $_POST['profil'],
+            'status' => $_POST['status'],
+            'tel' => $_POST['tel'],
+            'tl' => $_POST['tl'],
+            'alamat' => $_POST['alamat'],
+        ];
+    }
+    $where = [
+        'kd_calon' => $_POST['id']
+    ];
+    $update = __update($db, "calon", $data, $where);
+    if ($update) {
+    ?>
+        <script>
+            window.location.href = 'admin.php?target=calon';
+        </script>
+<?php
+    } else {
+
+        echo "gagal update" . $db->error;
+    }
+    // 
+}elseif ($opsi == "impor") {
+    if (!empty($_POST['password'])) {
+        $data = [
+            'nama_calon' => $_POST['nama_calon'],
+            'profil' => $_POST['profil'],
+            'status' => $_POST['status'],
+            'tel' => $_POST['tel'],
+            'tl' => $_POST['tl'],
+            'alamat' => $_POST['alamat'],
+            'password' => sha1($_POST['password'])
+        ];
+    } else {
+        $data = [
+            'nama_calon' => $_POST['nama_calon'],
+            'profil' => $_POST['profil'],
+            'status' => $_POST['status'],
+            'tel' => $_POST['tel'],
+            'tl' => $_POST['tl'],
+            'alamat' => $_POST['alamat'],
+        ];
+    }
+    $where = [
+        'kd_calon' => $_POST['id']
+    ];
+    $impor = __impor($db, "istikharah", $data, $where);
+    if ($impor) {
+    ?>
+        <script>
+            window.location.href = 'admin.php?target=istikharah';
+        </script>
+<?php
+    } else {
+
+        echo "gagal update" . $db->error;
+    }
+}
+
+//end kondisi update
+?>
