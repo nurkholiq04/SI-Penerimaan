@@ -11,7 +11,7 @@
         echo "<table class='table table-striped table-bordered'>
         <thead>
         <tr>
-            <th>No</th><th>Kode Calon</th><th>Nama Calon</th><th>Profile</th><th>Status</th><th>TTL</th><th>Alamat</th><th></th>
+            <th>No</th><th>Kode Calon</th><th>Nama Calon</th><th>Profile</th><th>Status</th><th>TTL</th><th>Alamat</th>
         </tr>
         </thead>
         <tbody>";
